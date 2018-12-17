@@ -1,0 +1,40 @@
+{
+  "name": "infokeeper",
+  "version": "1.0.0",
+  "description": "Information Record Keeper (experimental)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenSturley/InfoKeeper.git"
+  },
+  "keywords": [
+    "information",
+    "info",
+    "record",
+    "records",
+    "record",
+    "keeper",
+    "record",
+    "keepers"
+  ],
+  "author": "Ben Sturley <bensturley@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenSturley/InfoKeeper/issues"
+  },
+  "homepage": "https://github.com/BenSturley/InfoKeeper#readme",
+  "devDependencies": {
+    "eslint": "^5.10.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "csv": "^5.0.1",
+    "express": "^4.16.4",
+    "marked": "^0.5.2",
+    "pdfkit": "^0.8.3",
+    "validator": "^10.9.0"
+  }
+}

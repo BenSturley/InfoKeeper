@@ -1,0 +1,11 @@
+{
+  "name": "col-seps",
+  "version": "1.0.0",
+  "description": "Sandbox for column seperators in data files",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Sturley <bensturley@gmail.com>",
+  "license": "ISC"
+}
