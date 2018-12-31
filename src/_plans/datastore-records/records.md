@@ -11,7 +11,7 @@ D A T A S T O R E - R E C O R D S
 
                 [stage0: prepare datastore]
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+    
                 [stage1: create record object]
 
                     const obj = 

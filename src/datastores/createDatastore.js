@@ -21,14 +21,12 @@ const createDatastore = function( filePath ) {
 
     // if parent directory exists, create directory
     if ( !dirPathExists ) {
-
-        
-
+        // create the dirs
     }
 
-    // create data file
-
-
+    const valid = false;
+    // return... good or bod?
+    return valid;
 };
 
 module.exports = createDatastore;

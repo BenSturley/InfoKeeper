@@ -8,7 +8,7 @@
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-const errorHandler = function( err, msg ) {
+const errorHandler = ( err, msg ) => {
     
     if ( msg === undefined ) {
         console.error( `ERROR: ${msg}; ${err}` );
@@ -19,4 +19,4 @@ const errorHandler = function( err, msg ) {
 
 };
 
-module.exports = errorHandler();
+module.exports = errorHandler;

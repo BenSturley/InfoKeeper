@@ -1,4 +1,4 @@
-// -
+// 
 // app.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~/app.js
@@ -6,6 +6,7 @@
 // 2018-12-17       - started
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // 2018-12-22       - update
+// ~~~~~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,43 +25,42 @@ if ( welcomeMsgs.run_welcome ) {
 // define file content path test
 const testingFileContentPath = () => { 
  
-    // //const fileContentPath = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\app.js';
-    // const testFileContentPath = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\test-data-file.txt';
+    //const fileContentPath = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\app.js';
+    const testFileContentPath = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\test-data-file.txt';
 
-    // const fs = require('fs');
-    // try {
-    //   fs.readFile('/some/file/that/does-not-exist', (err, data) => {
-    //     if (err) {
-          
-    //     }
-    //   });
-    // } catch (err) {
-    //   // This will not catch the throw!
-    //   console.error(err);
+    const fs = require('fs');
+    try {
+      fs.readFile('/some/file/that/does-not-exist', (err, data) => {
+        // mistaken assumption: throwing here...
+        if (err) {
+          throw err;
+        }
+      });
+    } catch (err) {
+      // This will not catch the throw!
+      console.error(err);
     
     
-    //     try {
-    //         fs.readFile('/some/file/that/does-not-exist', (err, data) => {
-    //         // mistaken assumption: throwing here...
-    //         if (err) {
-    //             throw err;
-    //         }
-    //     });
-    //     }
-    //     catch (err) {
-    //         // This will not catch the throw!
-    //         console.error(err);
-    //     }
+    try {
+      fs.readFile('/some/file/that/does-not-exist', (err, data) => {
+        // mistaken assumption: throwing here...
+        if (err) {
+          throw err;
+        }
+      });
+    } catch (err) {
+      // This will not catch the throw!
+      console.error(err);
+    }
+    const fileContent = fs.readFileSync( testFileContentPath, 'UTF8' );
+    const outputter = require('./output');
+    outputter.output( 'P L A N S . M D', fileContent );
 
-    //     const fileContent = fs.readFileSync( testFileContentPath, 'UTF8' );
-    //     const outputter = require('./output');
-    //     outputter.output( 'P L A N S . M D', fileContent );
-    // }
-};
+}
 
 // 
 // define context test
-const testingContextTest = () => {
+const tesingContextTest = () => {
      
     console.log('Aquiring testing context...');
     const testingContext = require('./tests/framework/TestingFramework');
@@ -72,15 +72,6 @@ const testingContextTest = () => {
     console.log('Tests complete.');
  
 }; 
-
-const runNameGenerators = () => {
-
-    const context = require('./tests/framework/TestingFramework');
-    const generator = require('./_plans/test-data/data_generators/test-data-generator');
-    generator
-        .nameGenerator()
-        .generate_full_names( context );
-};
  
 // define standard tests
 const runTests = () => {
@@ -95,13 +86,10 @@ if ( globals.TEST_run_test_file_content_path ) {
     testingFileContentPath();
 }
 if ( globals.TEST_run_test_file_tesing_context ) {
-    testingContextTest();
+    tesingContextTest();
 }
 if ( globals.TEST_run_standard_tests ) {
     runTests(); 
-}
-if ( globals.TEST_run_names_generators ) {
-    runNameGenerators();
 }
 
 // current test
@@ -116,5 +104,4 @@ if ( globals.TEST_run_current_test ) {
 //
 if ( welcomeMsgs.run_welcome ) {
     welcomeMsgs.run_goodbye();
-}
-
+}};
