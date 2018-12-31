@@ -75,10 +75,11 @@ const testingContextTest = () => {
 
 const runNameGenerators = () => {
 
-    const context = require('./tests/framework/TestingFramework');
+    const context   = require('./tests/framework/TestingFramework');
     const generator = require('./_plans/test-data/data_generators/test-data-generator');
     generator
-        .nameGenerator()
+        .namesGenerator()
+        // .generate_first_names( context );
         .generate_full_names( context );
 };
  
@@ -106,8 +107,8 @@ if ( globals.TEST_run_names_generators ) {
 
 // current test
 if ( globals.TEST_run_current_test ) {
-    const test = require('./tests/createDirectoryPathTest');
-    const context = require('./tests/framework/TestingFramework');
+    const test      = require('./tests/createDirectoryPathTest');
+    const context   = require('./tests/framework/TestingFramework');
     test.run_test( context );
 }
 

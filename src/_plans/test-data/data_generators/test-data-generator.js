@@ -13,7 +13,7 @@
 const OUTPUT_each_name = true;
 
 
-function firstNamesGenerator( context ) {
+function generate_first_names( context ) {
 
     if ( context === undefined ) {
         throw new ReferenceError( 'No TestingContext provided.' );
@@ -31,7 +31,7 @@ function firstNamesGenerator( context ) {
 
     const femaleNameObjects     = genFemaleNames( context );
     const maleNameObjects       = genMaleNames( context );
-    const lastNameObjects       = genLastNames( context );
+    const lastNameObjects       = generate_last_names( context );
 
     context.test_complete = true;
 
@@ -83,7 +83,7 @@ function genMaleNames( context ) {
 // 
 // last names generator
 //
-function genLastNames( context ) {
+function generate_last_names( context ) {
         
     if ( context === undefined ) {
         throw new ReferenceError( 'No TestingContext provided.' );
@@ -92,7 +92,7 @@ function genLastNames( context ) {
     context.test_started = true;
 
     const generator         = require('./lastNamesGenerator');
-    const generatedNames    = generator.genLastNames( context );
+    const generatedNames    = generator.generate_last_names( context );
 
 
     context.test_complete = true;
@@ -121,7 +121,7 @@ function namesGenerator( context ) {
 
     // get last names
     const lnGenerator       = require('./lastNamesGenerator');
-    const lastNames         = lnGenerator( context ); 
+    const lastNames         = generate_last_names( context ); 
 
     // little fn to build the full name
     const createFullName = ( firstname, lastname ) => {
@@ -175,7 +175,7 @@ function namesGenerator( context ) {
                 else {
                     firstname = femaleFirstNames[ currentIndex ].name;
                     maleFlag    = true;
-                }
+            }
                 currentIndex++;
     
                 const name = createFullName( firstname, lastname );
@@ -203,16 +203,16 @@ function namesGenerator( context ) {
 function generateNames() {
 
     return {
-        generate_first_names:   firstNamesGenerator,
-        generate_last_names:    genLastNames,
+        generate_first_names:   generate_first_names,
+        generate_last_names:    generate_last_names,  
         generate_full_names:    namesGenerator,
     };
 }
 
 // exports, derrrrr................. 
 module.exports = {
-    nameGenerator:      generateNames,
-    test_name:          'Test Data Names Generator',
+    namesGenerator:     generateNames,
+    test_name:          'Test Data Generators',
     enabled:            true
 };
     

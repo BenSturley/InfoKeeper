@@ -27,8 +27,8 @@ Returns: array of objects:
 
 //
 // lib refs
-const fs                    = require('fs');
-const getNamesFromHtml     = require('./getNamesFromHtml');
+const fs                = require( 'fs' );
+const getNamesFromHtml  = require( './getNamesFromHtml' );
  
 //
 // flags
@@ -42,7 +42,7 @@ const lastNamesHtmlFilePath2
     = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-last-names-2.html';
 
 // 
-function genLastNames( context ) {
+function generate_last_names ( context ) {
 
     if ( context === undefined ) {
         throw new ReferenceError('No TestingContext provided.');
@@ -67,4 +67,7 @@ function genLastNames( context ) {
 
 }
 
-module.exports = genLastNames;
+module.exports = 
+{   
+    generate_last_names:    generate_last_names 
+};
