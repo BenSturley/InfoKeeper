@@ -26,7 +26,7 @@ Returns: object:
         number:     number
     }
 */ 
-
+    
 const objectCreator = function( name, index, number ) {
 
     // create data object

@@ -123,37 +123,78 @@ function namesGenerator( context ) {
     const lnGenerator       = require('./lastNamesGenerator');
     const lastNames         = lnGenerator( context ); 
 
+    // little fn to build the full name
+    const createFullName = ( firstname, lastname ) => {
+        let rv = firstname;
+        rv += ' ';
+        rv += lastname;
+        return rv;
+    };
+
+
     // bung 'em up togther
     const names = [];
     var currentIndex    = 0
     var maleFlag        = false;
     var lastnameIndex   = 0;
+    var counter         = 0;
     lastNames.forEach(
         ln => {
-            var obj = {};
-            var name = '';
+ 
+            let allGood = true;
+            
+            // check we have enough first names
             if ( maleFlag ) {
-                obj = maleFirstNames[currentIndex];
-                name = maleFirstNames[currentIndex];
-                maleFlag = false;
+                if ( currentIndex >= maleFirstNames.length ) {
+                    // break;
+                    allGood = false;
+                }
             }
             else {
-                obj = femaleFirstNames[currentIndex];
-                name = obj.name;
-                maleFlag = true;
-                currentIndex++;
+                if ( currentIndex >= femaleFirstNames.length ) {
+                    // break;
+                    allGood = false;
+                }
             }
-            name += ' ' + lastNames[lastnameIndex];
 
-            if ( OUTPUT_each_name ) {
-                let msg = `Extracted name: ${obj.number}: ${obj.name}`;
-                context.messenger.message( msg );
+            // lets do it!
+            if ( allGood && ln !== undefined ) {
+
+                var firstname   = '';
+                var lastname    = '';
+    
+                // do lastname
+                lastname = lastNames[ lastnameIndex ].name;
+                lastnameIndex++;
+    
+                // do firstname
+                if ( maleFlag ) {
+                    firstname = maleFirstNames[ currentIndex ].name;
+                    maleFlag = false;
+                }
+                else {
+                    firstname = femaleFirstNames[ currentIndex ].name;
+                    maleFlag    = true;
+                }
+                currentIndex++;
+    
+                const name = createFullName( firstname, lastname );
+                
+                if ( OUTPUT_each_name ) {
+                    let num = counter +1;
+                    let msg = `Extracted (full) name: ${num}: ${name}`;
+                    context.messenger.message( msg );
+                }
+                
+                names.push( name );
+                counter = counter + 1;
             }
         }
     );
-
+    
     context.test_complete = true;
 
+    return names;
 }
 
 //
