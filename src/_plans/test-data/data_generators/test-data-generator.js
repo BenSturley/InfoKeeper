@@ -12,7 +12,9 @@
 // flags
 const OUTPUT_each_name = true;
 
-
+//
+// generate first names
+//
 function generate_first_names( context ) {
 
     if ( context === undefined ) {
@@ -37,10 +39,8 @@ function generate_first_names( context ) {
 
 }
 
-
 //
 // female first names
-//
 function genFemaleNames( context ) {
         
     if ( context === undefined ) {
@@ -62,7 +62,6 @@ function genFemaleNames( context ) {
 
 //
 // male first names
-//
 function genMaleNames( context ) {
         
     if ( context === undefined ) {
@@ -82,7 +81,6 @@ function genMaleNames( context ) {
 
 // 
 // last names generator
-//
 function generate_last_names( context ) {
         
     if ( context === undefined ) {
@@ -93,15 +91,13 @@ function generate_last_names( context ) {
 
     const generator         = require('./lastNamesGenerator');
     const generatedNames    = generator.generate_last_names( context );
-
-
+    
     context.test_complete = true;
 
     return generatedNames;
 }
 
 //
-// fish the first and last names together
 // 
 function namesGenerator( context ) {
 
@@ -120,17 +116,16 @@ function namesGenerator( context ) {
     const maleFirstNames    = maleGenerator( context );
 
     // get last names
-    const lnGenerator       = require('./lastNamesGenerator');
     const lastNames         = generate_last_names( context ); 
+    
 
     // little fn to build the full name
-    const createFullName = ( firstname, lastname ) => {
+    const createFullName    = ( firstname, lastname ) => {
         let rv = firstname;
         rv += ' ';
         rv += lastname;
         return rv;
     };
-
 
     // bung 'em up togther
     const names = [];
@@ -138,7 +133,12 @@ function namesGenerator( context ) {
     var maleFlag        = false;
     var lastnameIndex   = 0;
     var counter         = 0;
-    lastNames.forEach(
+
+    const utils = require('../../../apputils');
+    const shuffledNames = utils.shuffleArray( lastNames );
+
+    // iterate last names
+    shuffledNames.forEach(
         ln => {
  
             let allGood = true;
@@ -198,7 +198,11 @@ function namesGenerator( context ) {
 }
 
 //
-// who knows? needed, apparently
+// object returned by the module, provides an interface
+    // to all the name generators.
+//
+// Generally, only "generate_full_names()" would be used
+// along with other data generators.
 // 
 function generateNames() {
 
@@ -209,7 +213,7 @@ function generateNames() {
     };
 }
 
-// exports, derrrrr................. 
+// export the interface object above 
 module.exports = {
     namesGenerator:     generateNames,
     test_name:          'Test Data Generators',

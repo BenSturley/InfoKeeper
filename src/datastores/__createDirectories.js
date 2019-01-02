@@ -2,33 +2,22 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~/datastores/createDirectories.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 2018-12-22
+// 2018-12-26
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+const createDirectories = function( pathToCreate ) {
 
-// get lib refs
-const fs            = require( 'fs' );
-const path          = require( 'path' );
-const utils         = require( '../apputils' );
-const errorHandler  = require('../errorHandler');
+    // get lib refs
+    const fs    = require( 'fs' );
+    const path  = require( 'path' );
+    const utils = require( '../apputils' );
 
-const createDirectories = ( pathToCreate ) => {
-
-    // if ( context === undefined ) {
-    //     throw new ReferenceError('No TestingContext provided.');
-    // }
-    
-    // create a context
-    const context = require('../appContext');
-
-    // test context 
+    const context = require('../tests/framework/TestingFramework');
     const OUTPUT_paths = true;
-
+  
     if ( pathToCreate === undefined ) {
-        errorHandler.handleErrror(
-            new TypeError( 'No directory path to create provided.' )
-        );
+        pathToCreate = 'Public\\InfoKeeper\\DataStores\\Users\\Ben\\datastore\\files\\';
     }
 
     if ( OUTPUT_paths ) {
@@ -105,37 +94,30 @@ const createDirectories = ( pathToCreate ) => {
         
     );
 
-    // all done!
-    return true;
-};
-
-
-function splitPathIntoDirs( pathToSplit ) {
-    const dirs = pathToSplit.split( path.sep );
-    return dirs;
-}
-
-function isDrive( drivePath ) {
-    // const driveIndicatorIndex = ( drivePath.indexOf( ':' + path.sep ) );
-    const driveIndicatorIndex = ( drivePath.indexOf( ':' ) );
-    const rv = driveIndicatorIndex != -1;
-    return rv;
-}
-
-function doesDirectoryExist( dirPath ) {
-    return fs.existsSync ( dirPath );
-}
-function getCurrentDrive() {
-    const currentDir = __dirname;
-    const colonIndex = currentDir.indexOf( ':' );
-    let drive = currentDir.substring( 0, colonIndex + 1);
-    if ( !drive.endsWith( path.sep )) {
-        drive += path.sep;
+    function splitPathIntoDirs( pathToSplit ) {
+        const dirs = pathToSplit.split( path.sep );
+        return dirs;
     }
-    return drive;
-}
-
-
-module.exports = {
-    createDirectories:  createDirectories
+    function isDrive( drivePath ) {
+        const driveIndicatorIndex = ( drivePath.indexOf( ':' + path.sep ) );
+        const rv = driveIndicatorIndex != -1;
+        return rv;
+    }
+    
+    function doesDirectoryExist( dirPath ) {
+        
+        return fs.existsSync ( dirPath );
+    }
+    function getCurrentDrive() {
+        const currentDir = __dirname;
+        const colonIndex = currentDir.indexOf( ':' );
+        let drive = currentDir.substring( 0, colonIndex + 1);
+        if ( !drive.endsWith( path.sep )) {
+            drive += path.sep;
+        }
+        return drive;
+    }
+    
 };
+
+module.exports = createDirectories();

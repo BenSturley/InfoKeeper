@@ -28,12 +28,13 @@ Returns: array of objects:
 
 //
 // lib refs
+const config    = require('./testConfig');
 const utils     = require('../../../apputils');
 const cheerio   = require( 'cheerio' );
 
 //
 // flags
-const OUTPUT_each_name = true;
+const OUTPUT_each_name = config.OUTPUT_everything;
 
 //
 function getNamesFromHtml( html, context ) {

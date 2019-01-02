@@ -7,13 +7,13 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // 2018-12-22       - update
 // ~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+// 
 //
 // get globals ref
-const2 welcomeMsgs  = require('./welcomeMessages');
+const welcomeMsgs  = require('./welcomeMessages');
 const globals       = require('./globals');
 globals.TEST_run_test_file_content_path();
 
@@ -35,7 +35,7 @@ const testingFileContentPath = () => {
     const fs = require('fs');
     const fileContent = fs.readFileSync( testFileContentPath, 'UTF8' );
     const outputter = require('./output');
-    outputter.output( 'P L A N S . M D', fileContent );
+    outputter.output( 'P L A N S . M D', fileContent, true );
 
 };
 

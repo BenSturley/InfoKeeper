@@ -9,7 +9,11 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 
-const outputter = function( contentTitle, content ) {
+const outputter = function( contentTitle, content, clear ) {
+
+    if ( clear ) {
+        console.clear();
+    }
 
     console.log('****** CONTENT BEGINGS ******');
     console.log();

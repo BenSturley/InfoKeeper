@@ -18,8 +18,8 @@ const globals = () => {
         TEST_run_test_file_content_path:        false,
         TEST_run_test_file_tesing_context:      false,
         TEST_run_standard_tests:                false,
-        TEST_run_current_test:                  false,
-        TEST_run_names_generators:              true,
+        TEST_run_names_generators:              false,
+        TEST_run_current_test:                  true,
         
         APP_NAME:                                'InfoKeeper',
 

@@ -27,20 +27,18 @@ Returns: array of objects:
 
 //
 // lib refs
+const config            = require('./testConfig');
 const fs                = require( 'fs' );
 const getNamesFromHtml  = require( './getNamesFromHtml' );
  
 //
 // flags
-const OUTPUT_each_name = true;
+const OUTPUT_each_name = config.OUTPUT_everything;
 
 //
-// consts for things that should be config'd
-const lastNamesHtmlFilePath1
-    = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-last-names-1.html';
-const lastNamesHtmlFilePath2
-    = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-last-names-2.html';
-
+// html files to scrape test data from
+const lastNamesHtmlFilePath1 = config.PATH_html_last_names1;
+const lastNamesHtmlFilePath2 = config.PATH_html_last_names2;
 // 
 function generate_last_names ( context ) {
 

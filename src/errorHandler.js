@@ -19,4 +19,6 @@ const errorHandler = ( err, msg ) => {
 
 };
 
-module.exports = errorHandler;
+module.exports = {
+    handleErrror:       errorHandler
+};

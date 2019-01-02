@@ -32,17 +32,18 @@ Returns: array of objects:
 
 //
 // lib refs
-const fs                    = require('fs');
-const getNamesFromHtml      = require('./getNamesFromHtml');
+const config                = require( './testConfig' );
+const fs                    = require( 'fs' );
+const getNamesFromHtml      = require( './getNamesFromHtml' );
 
 //
 // flags
-const OUTPUT_each_name = true;
+const OUTPUT_each_name = config.OUTPUT_everything;
 
 //
 // consts for things that should be config'd
-const femaleNamesHtmlFilePath 
-    = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-first-names-for-females.html';
+const femaleNamesHtmlFilePath = config.PATH_html_female_names;
+    // = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-first-names-for-females.html';
 
 function genFemaleNames( context ) {
         

@@ -17,7 +17,7 @@ Arguments:
 /*
 Returns: array of objects:
     {
-        name:       content, 
+        name:       content, 0
         index:      index, 
         number:     index + 1
     }
@@ -30,17 +30,18 @@ Returns: array of objects:
 
 //
 // lib refs
+const config                = require('./testConfig');
 const fs                    = require('fs');
 const getNamesFromHtml      = require('./getNamesFromHtml');
  
 //
 // flags
-const OUTPUT_each_name = true;
+const OUTPUT_each_name = config.OUTPUT_everything;
 
 //
 // consts for things that should be config'd
-const maleNamesHtmlFilePath 
-    = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-first-names-for-males.html';
+const maleNamesHtmlFilePath = config.PATH_html_male_names;
+    // = 'C:\\Users\\Pete\\dev\\InfoKeeper\\src\\_plans\\test-data\\html\\100-first-names-for-males.html';
 
 function genMaleNames( context ) {
         
@@ -50,8 +51,7 @@ function genMaleNames( context ) {
     
     context.test_started = true;
 
-    const html = fs.readFileSync( maleNamesHtmlFilePath, 'UTF8' );
-    
+    const html = fs.readFileSync( maleNamesHtmlFilePath );
     const generatedNames = getNamesFromHtml( html, context );
 
     context.test_complete = true;
