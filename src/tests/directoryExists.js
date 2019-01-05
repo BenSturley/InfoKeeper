@@ -28,5 +28,5 @@ const runner = function( context ) {
 module.exports = {
     run_test:       runner,
     test_name:      'Directory Exists Test',
-    enabled:        true,
+    enabled:        false,
 };

@@ -134,5 +134,5 @@ function getCurrentDrive() {
 module.exports = {
     run_test:       tester,
     test_name:      'Create Directory Path Test',
-    enabled:        true
+    enabled:        false
 };

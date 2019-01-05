@@ -83,5 +83,5 @@
     module.exports = {
         run_test:       tester,
         test_name:      'Path Tests',
-        enabled:        true,
+        enabled:        false,
     };
