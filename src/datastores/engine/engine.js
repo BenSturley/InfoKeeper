@@ -14,11 +14,19 @@
 const engine = function() {
 
     function createDatastoreKey() {
-
+        const key = uuidv4();
+        return key;
     }
 
     function createHeader( datastoreKey ) {
+        const headerCreator = require('./datastores/createHeader');
+        headerCreator.createHeader( createDatastoreKey );
+    }
 
+    function createDatastore() {
+        const config = require('./datastores/createDatastore');
+        const storeCreator = require('./datastores/createDatastore');
+        storeCreator.createDatastore( config. )
     }
 
 };

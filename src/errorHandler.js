@@ -8,7 +8,7 @@
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-const errorHandler = ( err, msg ) => {
+const errorHandler = function( err, msg ) {
     
     if ( msg === undefined ) {
         console.error( `ERROR: ${msg}; ${err}` );

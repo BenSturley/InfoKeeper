@@ -18,19 +18,19 @@ const globals = () => {
     
     // ---------------------------------------------------------------------------- //
 
-        DEV_run_current_dev:                    true,
+        DEV_run_current_dev:                    false,
         
         TEST_run_test_file_content_path:        false,
         TEST_run_test_file_tesing_context:      false,
         TEST_run_standard_tests:                false,
         TEST_run_names_generators:              false,
-        TEST_run_current_test:                  false,
+        TEST_run_current_test:                  true,
         
     // ---------------------------------------------------------------------------- //
 
         APP_NAME:                               'InfoKeeper',
 
-        error_handler:                          errorHandler,
+        handle_error:                           errorHandler,
 
         MSGS_show_welcome:                      welcomeMsgs.run_welcome,
         MSGS_show_goodbye:                      welcomeMsgs.run_goodbye,

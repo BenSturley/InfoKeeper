@@ -15,6 +15,9 @@ const messenger = () => {
 
     const setEvents = function() {
 
+        emitter.on( 'clear' , () => {
+            console.clear();
+        });
         emitter.on( 'message', ( msg ) => {
             console.log(msg);
         });
@@ -48,7 +51,7 @@ const messenger = () => {
                 char = '~';
             }
             if ( count === undefined ) {
-                count = 40;
+                count = 80;
             }
             console.log( char.repeat( count ) );
         });
@@ -57,6 +60,11 @@ const messenger = () => {
     setEvents();
 
     return {
+
+        clear:
+            () => {
+                emitter.emit( 'clear' )
+            },
 
         message:    
             ( msg ) => {

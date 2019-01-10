@@ -11,19 +11,20 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 
-const lineChar = '*';
+const lineChar  = '=';
+const lineLen   = 60;
 
 const welcome = () => {
-    console.log( (lineChar.repeat(60)) );
+    console.log( (lineChar.repeat( lineLen )) );
     console.log( '  ** WELCOME TO InfoKeeper!' );
-    console.log( (lineChar.repeat(60)) );
+    console.log( (lineChar.repeat( lineLen )) );
 };
 
 const goodbye = () => {
 
-    console.log( (lineChar.repeat(60)) );
+    console.log( (lineChar.repeat( lineLen )) );
     console.log( '  ** GOODBYE FROM InfoKeeper!' );
-    console.log( (lineChar.repeat(60)) );
+    console.log( (lineChar.repeat( lineLen )) );
 };
 
 module.exports = {

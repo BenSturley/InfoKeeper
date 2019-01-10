@@ -3,30 +3,31 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~/datastores/datastores/createHeader.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 2019-01-02
+// 2019-01-02       - started
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// BS
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 2018-01-10       - update BS
+ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 const createHeader = function( datastoreKey ) {
 
-    const multiline = true;
-
-    var header = '';
-    if ( multiline ) {
-
-        var header   = '# [[Infokeeper.Datastore.Master]]'
-                    += `# [[Datastore.Key="${datastoreKey}"]]`
-                    += '## (reserved for future use) ##'
-                    += '## (reserved for future use) ##';
+    if ( datastoreKey === undefined ) {
+        const uuidv4 = require('uuid/v4');
+        datastoreKey = `[autogen:]${uuidv4()}`;
     }
-    else { 
+
+    const multiline = true;
+    let header = '';
+    if (    multiline ) {
+        header += '## [[Infokeeper.Datastore.Master]] ##';
+        header += `\n## [[Datastore.Key="${datastoreKey}"]] ##`;
+        header += '\n## (reserved for future use) ##';
+        header += '\n## (reserved for future use) ##';
+    }
+    else {
         header = '[[##::= InfoKeeeper Datastore =::##]]';
     }
 
-    const 
     return header;
-
 };
 
 module.exports = {

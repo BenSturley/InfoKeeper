@@ -1,27 +1,35 @@
 // -
 // config.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~/datastores/datastoreTracker/config.js
+// ~/datastores/engine/datastoreRegister/config.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // 2019-01-02 - - - - - - - - - - started
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 
-// 
 // 
 // 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // 
-const trackerConfig = function() {
+const registerConfig = function() {
 
-    const thisDir = __dirname;
+    const path = require('path');
+
+    const thisDir   = __dirname;
+    // const regDir    = thisDir;
+    const regDir    = 'c:\\public\\ik_dbg\\infokeeper\\datastores\\register';
+    const filename  = 'datastore_register.dat';
+    const fullpath  = path.join(regDir, filename);
+
+    const createdBy = 'BS';
 
     return {
 
-        registerFilename:       'datastore_tracker.dat',
-        registerPath:           thisDir,
+        registerFilename:           filename,
+        registerDirectoryPath:      regDir,
+        registerFilePath:           fullpath,
+        registerFileCreatedBy:      createdBy,
     };
 };
 
-module.exports = trackerConfig();
+module.exports = registerConfig();

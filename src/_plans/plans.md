@@ -13,6 +13,20 @@
 ### =~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=
 ###
 
+
+
+-- start with the register
+    - get Register
+    - 
+
+
+
+
+
+
+
+
+
 - Start from the bottom - ENV files (datafiles)
     - text files
     - pre-defined constant header string

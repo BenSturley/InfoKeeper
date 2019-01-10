@@ -11,8 +11,8 @@
 // get lib refs
 const fs            = require( 'fs' );
 const path          = require( 'path' );
-const utils         = require( '../apputils' );
-const errorHandler  = require('../errorHandler');
+const utils         = require( '../../../apputils' );
+const errorHandler  = require( '../../../errorHandler' );
 
 const createDatastore = function( filePath ) {
 
@@ -33,23 +33,18 @@ const createDatastore = function( filePath ) {
         }
     }
 
-    const valid = false;
+    let valid = false;
 
     // create file if it doesn't exist
     let fileExists = fs.existsSync( filePath );
     if ( !fileExists ) {
 
-        const headerCreater = require('./datastores/createHeader');
-        const header = headerCreater.createHeader()
+        const headerCreater = require('./createHeader');
+        const header = headerCreater.createHeader();
 
         fs.appendFileSync( filePath, header, 'utf8' );
-
+        valid = true;
     }
-    
-
-  
-  
-  
   
     // return... good or bod?
     return valid;

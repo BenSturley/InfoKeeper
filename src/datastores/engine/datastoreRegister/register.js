@@ -15,14 +15,25 @@
 // 
 const register = function() {
 
+    //
     // get a context so we can output
     const context = require('../../../appContext');
+    const outputToContext = function( msg ) {
+        context.messenger.message( msg );
+    }
 
+    //
+    // check register exists
+    const checkExists = require('./checkRegisterExists');
+    checkExists.checkRegisterExists();
+
+    // ----------------------------------------------------------- //
+
+    //
+    // grab the config
     const config = require('./config');
-    let dirToCheck = config.registerPath;
-
-    context.messenger.message( `** dirToCheck: ${dirToCheck}` )
-
+    const registerFilePath = config.registerFilePath;
+    
 };
 
 module.exports = {
