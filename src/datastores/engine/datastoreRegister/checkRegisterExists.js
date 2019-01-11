@@ -13,6 +13,9 @@
 // 
 const checkRegisterExists = function() {
 
+    var creationSuccessful = false;
+    var registerFileExists = false;
+
     //
     // grab the config
     const fs                = require('fs');
@@ -39,7 +42,7 @@ const checkRegisterExists = function() {
 
     //
     // check it exists
-    const registerFileExists = fs.existsSync( registerFilePath );
+    registerFileExists = fs.existsSync( registerFilePath );
     output = registerFileExists.toString().toUpperCase();
     msg = `** Register file exists: ${output}`;
     outputToContext( msg );
@@ -54,11 +57,13 @@ const checkRegisterExists = function() {
         outputToContext( msg );
 
         // get creator and run creation routine, hopefully getting TRUE back
-        const creationSuccessful = registerCreator.createRegister();
+        creationSuccessful = registerCreator.createRegister();
         if ( !creationSuccessful ) {
             throw new Error( 'Unable to create datastore register.' );
         }
     }
+
+    return registerFileExists;
 
 };
 

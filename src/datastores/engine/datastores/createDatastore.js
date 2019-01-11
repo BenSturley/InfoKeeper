@@ -3,7 +3,8 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~/datastores/createDatastore.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 2018-12-19
+// 2018-12-10           - created BS
+// 2018-12-11           - updated BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -16,7 +17,7 @@ const errorHandler  = require( '../../../errorHandler' );
 
 const createDatastore = function( filePath ) {
 
-      // get directory from filepath
+    // get directory from filepath
     const dirPath = path.dirname( filePath );
 
     // ensure directory exists
@@ -51,5 +52,5 @@ const createDatastore = function( filePath ) {
 };
 
 module.exports = { 
-    createDatastore:        createDatastore
+    createDatastore:        dirPath
 };

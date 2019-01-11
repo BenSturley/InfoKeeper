@@ -1,52 +1,20 @@
+    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 // -
-// app.js
+// createDatastoreKey.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~/app.js
+// ~/datastores/engine/createDatastoreKey.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 2018-12-17       - started
+// 2019-01-02       - started
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 2018-12-22       - update
+// 2019-01-02       - update
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 
-const globals       = require('./globals');
-const welcomeMsgs   = require('./welcomeMessages');
-
-//
-//
-// welcome messages
-if ( welcomeMsgs.run_welcome ) { 
-    welcomeMsgs.run_welcome(); 
-}
-
-
-
-//
-// globals - launchers
-const test_launchers = require('./testingLaunchers');
-test_launchers.run_launchers();
-
-
-// 
-// current dev
-const currentDev = () => {
-    const register  = require('./datastores/engine/datastoreRegister/register');
-    const config    = require('./datastores/engine/datastoreRegister/config');
-    const engine    = require('./datastores/engine/engine');
-    register.dev_register();
-    engine.createDatastore();
+const createDatastoreKey = function() {
+    const uuidv4 = require('uuid/v4');
+    const key = uuidv4();
+    return key;
 };
-if ( globals.DEV_run_current_dev ) {
-    currentDev();
-}
 
-//
-//
-// goodbye message
-if ( welcomeMsgs.run_welcome ) { 
-    welcomeMsgs.run_goodbye(); 
-}
-
-
-
+module.exports = {
+    createDatastoreKey:     createDatastoreKey,
+};

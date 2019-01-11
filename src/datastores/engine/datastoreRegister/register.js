@@ -25,7 +25,7 @@ const register = function() {
     //
     // check register exists
     const checkExists = require('./checkRegisterExists');
-    checkExists.checkRegisterExists();
+    const regExists = checkExists.checkRegisterExists();
 
     // ----------------------------------------------------------- //
 

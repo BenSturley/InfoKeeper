@@ -1,7 +1,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 // -
-// app.js
+// createHeader.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~/app.js
+// ~/datastores/engine/createHeader.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // 2018-12-17       - started
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -9,44 +9,31 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 
-const globals       = require('./globals');
-const welcomeMsgs   = require('./welcomeMessages');
-
 //
-//
-// welcome messages
-if ( welcomeMsgs.run_welcome ) { 
-    welcomeMsgs.run_welcome(); 
-}
+const createHeader = function( datastoreKey ) {
 
+    if ( datastoreKey === undefined ) {
+        const uuidv4 = require('uuid/v4');
+        datastoreKey = `[autogen:]${uuidv4()}`;
+    }
 
+    createHeader( createDatastoreKey );
+    
+    const multiline = true;
+    let header = '';
+    if (    multiline ) {
+        header += '## [[Infokeeper.Datastore.Master]] ##';
+        header += `\n## [[Datastore.Key="${datastoreKey}"]] ##`;
+        header += '\n## (reserved for future use) ##';
+        header += '\n## (reserved for future use) ##';
+    }
+    else {
+        header = '[[##::= InfoKeeeper Datastore =::##]]';
+    }
 
-//
-// globals - launchers
-const test_launchers = require('./testingLaunchers');
-test_launchers.run_launchers();
-
-
-// 
-// current dev
-const currentDev = () => {
-    const register  = require('./datastores/engine/datastoreRegister/register');
-    const config    = require('./datastores/engine/datastoreRegister/config');
-    const engine    = require('./datastores/engine/engine');
-    register.dev_register();
-    engine.createDatastore();
+    return header;
 };
-if ( globals.DEV_run_current_dev ) {
-    currentDev();
-}
 
-//
-//
-// goodbye message
-if ( welcomeMsgs.run_welcome ) { 
-    welcomeMsgs.run_goodbye(); 
-}
-
-
-
+module.exports = {
+    createHeader:   createHeader
+};
